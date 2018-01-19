@@ -46,7 +46,7 @@ public class Seccond_Activity extends Activity implements View.OnClickListener {
                     get.setText("");
                     break;
                 case R.id.button5:
-                    Intent intent = new Intent(getApplicationContext(),Seccond_Activity.class);
+                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                     intent.putExtra("xxx", get.getText().toString());
                     startActivity(intent);
 
