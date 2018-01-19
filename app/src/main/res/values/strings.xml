@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">TestDoron</string>
+    <string name="intro">My Name is Doron Amram. this is the test result of my exam.</string>
+    <string name="button">PUSH ME...</string>
+    <string name="cnt">Charachters Counter:</string>
+    <string name="Ed">Start typing here [max = 150 chars]</string>
+    <string name="title_activity_seccond_">Seccond_Activity</string>
+    <string name="secintro">Your Text</string>
+    <string name="Cap">CAPITALS</string>
+    <string name="Sml">SMALLS</string>
+    <string name="Org">ORIGINAL</string>
+    <string name="bck">BACK</string>
+    <string name="toast">Max 150 chars!</string>
+
+
+
+
+
+
+
+
+</resources>
