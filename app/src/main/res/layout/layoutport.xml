@@ -19,6 +19,8 @@
         android:layout_marginTop="121dp"
         android:text="@string/button"
         android:background="@drawable/border"
+        android:enabled="false"
+
 
         />
 

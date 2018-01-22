@@ -15,22 +15,26 @@ public class MainActivity extends Activity {
         public Button push;
         public EditText ed;
         public TextView tv;
-        int cnt=0;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        push=(Button) findViewById(R.id.button);
+         push=(Button) findViewById(R.id.button);
         ed=(EditText)findViewById(R.id.edT);
-        tv=(TextView)findViewById(R.id.textView2);
-        push.setEnabled(false);
-        push.setOnClickListener(new View.OnClickListener(){
+         TextWatcher tv1=new TextHandler();
+           ed.addTextChangedListener(tv1);
+         tv=(TextView)findViewById(R.id.textView2);
+         push.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                 Intent intent = new Intent(getApplicationContext(),Seccond_Activity.class);
-                intent.putExtra("xxx", ed.getText().toString());
-                startActivity(intent);
-            }
+                 Intent intent = new Intent(MainActivity.this,Seccond_Activity.class);
+                intent.putExtra("content", ed.getText().toString());
+                startActivityForResult(intent,1);
+             }
         });
+
+
         ed.addTextChangedListener(new TextWatcher() {
 
 
@@ -54,17 +58,34 @@ public class MainActivity extends Activity {
         });
 
          }
-        public void text(View v){
-            ed=(EditText)findViewById(R.id.edT);
-            String edf=ed.getText().toString();
-            cnt=edf.length();
-            tv.setText(cnt);
-             if(ed.getText().length()>=150){
-                Toast.makeText(this, getString(R.string.toast), Toast.LENGTH_LONG).show();
-            }
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==1&&resultCode==RESULT_OK){
+            String message=data.getStringExtra("content");
+            ed.setText(message);
         }
+    }
 
+
+    private class TextHandler implements TextWatcher{
+
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+            int cnt=ed.getText().length();
+             push.setEnabled(cnt>0);
+            if(cnt>150){
+                Toast.makeText(MainActivity.this,"You are not allowd to type 150 chars",Toast.LENGTH_LONG ).show();
+            }
+            tv.setText(Integer.toString(cnt));
+        }
+    }
 }
 
 

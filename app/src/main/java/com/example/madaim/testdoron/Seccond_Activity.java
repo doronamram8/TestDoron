@@ -24,7 +24,7 @@ public class Seccond_Activity extends Activity implements View.OnClickListener {
         origin=(Button) findViewById(R.id.button4);
         back=(Button)findViewById(R.id.button5);
         get=(EditText)findViewById(R.id.ED2);
-        get.setText(getIntent().getStringExtra("xxx"));
+        get.setText(getIntent().getStringExtra("content"));
         cap.setOnClickListener((View.OnClickListener) this);
         smal.setOnClickListener((View.OnClickListener) this);
         origin.setOnClickListener((View.OnClickListener) this);
