@@ -27,7 +27,8 @@ public class MainActivity extends Activity {
            ed.addTextChangedListener(tv1);
          tv=(TextView)findViewById(R.id.textView2);
          push.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
+             @Override
+             public void onClick(View v){
                  Intent intent = new Intent(MainActivity.this,Seccond_Activity.class);
                 intent.putExtra("content", ed.getText().toString());
                 startActivityForResult(intent,1);

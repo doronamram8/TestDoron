@@ -7,49 +7,47 @@ import android.text.InputFilter;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class Seccond_Activity extends Activity implements View.OnClickListener {
-    EditText get;
-    Button cap;
-    Button smal;
-    Button origin;
-    Button back;
-    @Override
+        String origi;
+
+     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seccond_);
-        cap=(Button)findViewById(R.id.button2);
-        smal=(Button)findViewById(R.id.button3);
-        origin=(Button) findViewById(R.id.button4);
-        back=(Button)findViewById(R.id.button5);
-        get=(EditText)findViewById(R.id.ED2);
-        get.setText(getIntent().getStringExtra("content"));
-        cap.setOnClickListener((View.OnClickListener) this);
-        smal.setOnClickListener((View.OnClickListener) this);
-        origin.setOnClickListener((View.OnClickListener) this);
-        back.setOnClickListener((View.OnClickListener) this);
+        Intent i=getIntent();
+        String origi=i.getStringExtra("content");
+        TextView tv=findViewById(R.id.ED2);
+         tv.setText(origi);
+        findViewById(R.id.button2).setOnClickListener(this);
+        findViewById(R.id.button3).setOnClickListener(this);
+         findViewById(R.id.button4).setOnClickListener(this);
+         findViewById(R.id.button5).setOnClickListener(this);
 
 
-    }
+
+     }
         public void onClick(View view){
+            TextView tv=findViewById(R.id.ED2);
+             String message=tv.getText().toString();
             switch (view.getId()){
                 case R.id.button2:
-                    String text = get.getText().toString();
-                   text.toUpperCase();
-                     break;
+                    tv.setText(message.toUpperCase());
+                      break;
                 case R.id.button3:
-                    String text2 = get.getText().toString();
-                   text2.toLowerCase();
+                    tv.setText(message.toLowerCase());
                     break;
                 case R.id.button4:
-                    get.setText("");
-                    break;
-                case R.id.button5:
-                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                    intent.putExtra("xxx", get.getText().toString());
-                    startActivity(intent);
+                           tv.setText(origi);
 
+                     break;
+                case R.id.button5:
+                    Intent intent =new Intent();
+                    intent.putExtra("content",message);
+                    setResult(1,intent);
+                    finish();
 
 
 
